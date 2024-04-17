@@ -1,8 +1,8 @@
 // in this file we can call the all the databse calls
 
-const instructorModel = require('instructorModel')// import from  instructor user model
+const instructorModel = require('../models/instructorUserModel')// import from  instructor user model
 
-async function instructorSignup(fullname, email, password) {
+async function instructorSignupService(fullname, email, password) {
   const alreadyExisting = await instructorModel.findOne({ email })
 
   if (alreadyExisting) {
@@ -13,4 +13,11 @@ async function instructorSignup(fullname, email, password) {
     email,
     password,
   })
+
+  userInstructor.toJSON()
+  delete userInstructor.password
+  return userInstructor;
 }
+
+
+module.exports = {instructorSignupService} 

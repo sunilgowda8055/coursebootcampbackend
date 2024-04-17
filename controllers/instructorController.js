@@ -1,6 +1,10 @@
+const {instructorSignupService} = require("../services/instructorService")
+
 const instructorSignup = async (req, res) => {
   try {
     const { fullName, email, password } = req.body
+
+    const instructor = await instructorSignupService(fullName,email,password)
 
     return res.status(201).send({
       message: 'Instructor Signup Successful',

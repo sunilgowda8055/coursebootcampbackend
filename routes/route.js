@@ -5,3 +5,5 @@ const router = express.Router() // import router
 // step1
 
 router.post('/signupInstructor', instructorSignup)
+
+module.exports = router
